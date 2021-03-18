@@ -1,5 +1,5 @@
 # Graph Creator  
-A basic graph creation tool that can generate graphs with variable vertices and edges.  
+A basic graph creation tool that can generate graphs with a configurable number of vertices and edges.  
 The tool currently supports 2 output formats : "dot" and "TP2".  
   
 # Documentation  
