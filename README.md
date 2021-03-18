@@ -1,6 +1,8 @@
 # Graph Creator  
 A basic graph creation tool that can generate graphs with a configurable number of vertices and edges.  
-The tool currently supports 2 output formats : "dot" and "TP2".  
+## Supported output formats
+- **DOT** : https://en.wikipedia.org/wiki/DOT_(graph_description_language)  
+- **TP2**  
   
 # Documentation  
 ## How to use Graph Creator  
