@@ -11,6 +11,8 @@ The tool currently supports 2 output formats : "dot" and "TP2".
     - desiredNumberOfVertices : unsigned Int  
     - desiredNumberOfEdges : unsigned Int  
     - outputFormat : character
+      - d : Dot output format
+      - t : TP2 output format
 ### Examples  
 - GraphCreator 20 40 d
   - Creates a txt file with 20 vertices and 40 edges in the **dot** output format
