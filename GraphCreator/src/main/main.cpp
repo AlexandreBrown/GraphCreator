@@ -45,7 +45,7 @@ string getFormat(const string& desiredOutputFormatCommand);
 
 void outputToDot(ofstream& output, const vector<Vertex>& vertices);
 
-void outputToTp2(ofstream& output, const vector<Vertex>& vertices);
+void outputToTp2(ofstream& output, const vector<Vertex>& vertices, size_t numberOfEdges);
 
 size_t getDestinationIndex(const vector<Vertex>& neighbours, size_t numberOfVerticesInGraph);
 
@@ -63,8 +63,6 @@ int main(int argc, const char* argv[]) {
 	if (!output.is_open()) {
 		cout << "Could not generate graph!" << endl;
 	}
-
-	vector<Vertex> edges{};
 
 	vector<Vertex> vertices{};
 
@@ -94,7 +92,7 @@ int main(int argc, const char* argv[]) {
 	if (desiredOutputFormatCommand=="d") {
 		outputToDot(output, vertices);
 	} else if (desiredOutputFormatCommand=="t") {
-		outputToTp2(output, vertices);
+		outputToTp2(output, vertices, desiredEdgesCount);
 	}
 
 	output.close();
@@ -146,7 +144,7 @@ void outputToDot(ofstream& output, const vector<Vertex>& vertices) {
 	output << "}";
 }
 
-void outputToTp2(ofstream& output, const vector<Vertex>& vertices) {
+void outputToTp2(ofstream& output, const vector<Vertex>& vertices, size_t numberOfEdges) {
 
 	output << "Reseau Interurbain: GraphDataSet" << endl;
 	output << to_string(vertices.size()) << " villes" << endl;
@@ -154,9 +152,17 @@ void outputToTp2(ofstream& output, const vector<Vertex>& vertices) {
 	for (const auto& vertex: vertices) {
 		output << "Vertex" << to_string(vertex.number) << endl;
 	}
-	output << "Liste des trajets:" << endl;
-	for (const auto& vertex: vertices) {
-		for (const auto& neighbour: vertex.neighbours) {
+	output << "Liste des trajets:";
+	if (numberOfEdges > 0) {
+		output << endl;
+	}
+	for (int vertexIndex = 0; vertexIndex < vertices.size(); ++vertexIndex) {
+
+		const auto& vertex = vertices[vertexIndex];
+
+		for (int neighbourIndex = 0; neighbourIndex < vertex.neighbours.size(); ++neighbourIndex) {
+
+			const auto& neighbour = vertex.neighbours[neighbourIndex];
 			output << "Vertex" << to_string(vertex.number) << endl;
 			output << "Vertex" << to_string(neighbour.number) << endl;
 
@@ -165,10 +171,13 @@ void outputToTp2(ofstream& output, const vector<Vertex>& vertices) {
 			std::ostringstream weight2;
 			weight2 << std::fixed << std::setprecision(2) << static_cast<float>(random(1, 200));
 			output << weight1.str() << " "
-			       << weight2.str() << endl;
+			       << weight2.str();
+
+			if (!(vertexIndex==(vertices.size() - 1) && neighbourIndex==(vertex.neighbours.size() - 1))) {
+				output << endl;
+			}
 		}
 	}
-
 }
 
 string getFormat(const string& desiredOutputFormatCommand) {
