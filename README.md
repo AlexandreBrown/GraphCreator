@@ -9,7 +9,7 @@ A basic graph creation tool that can generate graphs with a configurable number 
 - Build the project to generate an executable "GraphCreator"  
 - Type the following command in the terminal, make sure you are in the GraphCreator executable directory.  
 - The syntaxt goes as follow : 
-  - `GraphCreator \<desiredNumberOfVertices\> \<desiredNumberOfEdges\> \<outputFormat\>`     
+  - `GraphCreator <desiredNumberOfVertices> <desiredNumberOfEdges> <outputFormat>`     
     - desiredNumberOfVertices : unsigned Int  
     - desiredNumberOfEdges : unsigned Int  
     - outputFormat : character
