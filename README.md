@@ -13,11 +13,11 @@ A basic graph creation tool that can generate a graph with a configurable number
     - desiredNumberOfVertices : unsigned Int  
     - desiredNumberOfEdges : unsigned Int  
     - outputFormat : character
-      - d : Dot output format
+      - d : DOT output format
       - t : TP2 output format
 ### Examples  
 - `GraphCreator 20 40 d`  
-  - Creates a txt file with 20 vertices and 40 edges in the **dot** output format
+  - Creates a txt file with 20 vertices and 40 edges in the **DOT** output format
 - `GraphCreator 20 40 t`  
   - Creates a txt file with 20 vertices and 40 edges in the **TP2** output format  
 
